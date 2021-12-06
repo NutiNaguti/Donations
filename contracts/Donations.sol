@@ -28,10 +28,12 @@ contract Donation is Ownable {
   // Функция вывода задоначеных средств, доступно только владельцу контракта
   function Withdrow(address payable to, uint amount) public onlyOwner {
     to.transfer(amount);
+    allFunds -= amount;
   }
 
   // Вывод всех доступных средств
   function WithdrowAll(address payable to) public onlyOwner {
     to.transfer(address(this).balance);
+    allFunds = 0;
   }
 }
