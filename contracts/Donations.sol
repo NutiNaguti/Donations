@@ -32,6 +32,6 @@ contract Donation is Ownable {
 
   // Вывод всех доступных средств
   function WithdrowAll(address payable to) public onlyOwner {
-    to.transfer(allFunds);
+    to.transfer(address(this).balance);
   }
 }
